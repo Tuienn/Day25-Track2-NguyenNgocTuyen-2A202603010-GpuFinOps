@@ -1,0 +1,414 @@
+{
+  "m1": {
+    "summary": [
+      {
+        "gpu_id": "gpu-h100-0",
+        "gpu_type": "H100",
+        "gpu_util_pct": 94.4,
+        "mfu": 0.417,
+        "mbu": 0.446,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-h100-1",
+        "gpu_type": "H100",
+        "gpu_util_pct": 95.2,
+        "mfu": 0.408,
+        "mbu": 0.44,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-h100-2",
+        "gpu_type": "H100",
+        "gpu_util_pct": 94.3,
+        "mfu": 0.401,
+        "mbu": 0.423,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-h100-3",
+        "gpu_type": "H100",
+        "gpu_util_pct": 93.1,
+        "mfu": 0.427,
+        "mbu": 0.444,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-h100-4",
+        "gpu_type": "H100",
+        "gpu_util_pct": 98.2,
+        "mfu": 0.194,
+        "mbu": 0.207,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-h100-5",
+        "gpu_type": "H100",
+        "gpu_util_pct": 61.1,
+        "mfu": 0.261,
+        "mbu": 0.271,
+        "idle_hours": 8
+      },
+      {
+        "gpu_id": "gpu-a100-0",
+        "gpu_type": "A100",
+        "gpu_util_pct": 31.4,
+        "mfu": 0.259,
+        "mbu": 0.276,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-a100-1",
+        "gpu_type": "A100",
+        "gpu_util_pct": 28.0,
+        "mfu": 0.236,
+        "mbu": 0.247,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-a10g-0",
+        "gpu_type": "A10G",
+        "gpu_util_pct": 25.0,
+        "mfu": 0.218,
+        "mbu": 0.235,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-a10g-1",
+        "gpu_type": "A10G",
+        "gpu_util_pct": 96.9,
+        "mfu": 0.268,
+        "mbu": 0.302,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-l4-0",
+        "gpu_type": "L4",
+        "gpu_util_pct": 40.0,
+        "mfu": 0.302,
+        "mbu": 0.328,
+        "idle_hours": 0
+      }
+    ],
+    "lies": [
+      {
+        "gpu_id": "gpu-h100-4",
+        "gpu_type": "H100",
+        "gpu_util_pct": 98.2,
+        "mfu": 0.194,
+        "mbu": 0.207,
+        "idle_hours": 0
+      },
+      {
+        "gpu_id": "gpu-a10g-1",
+        "gpu_type": "A10G",
+        "gpu_util_pct": 96.9,
+        "mfu": 0.268,
+        "mbu": 0.302,
+        "idle_hours": 0
+      }
+    ],
+    "idle_waste_daily": 20.0
+  },
+  "m2": {
+    "baseline_daily": 48.87,
+    "optimized_daily": 8.48,
+    "baseline_per_m": 6.488,
+    "optimized_per_m": 1.126,
+    "savings_pct": 82.6,
+    "total_tokens": 7533027,
+    "lever_savings": {
+      "cascade": 37.398518,
+      "cache": 1.196455,
+      "batch": 1.794565
+    },
+    "cascade_daily": 11.475643,
+    "cache_daily": 10.279188,
+    "reasoning_requests": 201,
+    "normal_requests": 2199,
+    "total_requests": 2400,
+    "reasoning_tokens": 1241156,
+    "normal_tokens": 6291871,
+    "reasoning_cost": 1.396464,
+    "normal_cost": 7.088159,
+    "reasoning_wh": 29787.744,
+    "normal_wh": 1887.5613,
+    "reasoning_cost_share": 0.164588,
+    "reasoning_traffic_share": 0.08375,
+    "reasoning_energy_share": 0.940409,
+    "reasoning_normal_energy_wh": 372.3468,
+    "reasoning_extra_wh": 29415.3972,
+    "reasoning_cap_fraction": 0.1,
+    "reasoning_cap_requests": 201,
+    "reasoning_cap_traffic_pct": 8.375,
+    "reasoning_cap_saved_usd": 0.0,
+    "reasoning_cap_saved_wh": 0,
+    "reasoning_cap_total_wh_before": 31675.3053,
+    "reasoning_cap_total_wh_after": 31675.3053,
+    "reasoning_cap_assumption": "same tokens, tier, prices, caching and batching; no dollar premium assigned",
+    "reasoning_routing_rule": "offline output-length scenario proxy only; production requires an input-side task classifier, confidence gate, and quality validation"
+  },
+  "m3": {
+    "recommendations": [
+      {
+        "job_id": "job-train-llm",
+        "gpu_type": "H100",
+        "tier": "spot",
+        "active_gpu_hours": 4800.0,
+        "billed_gpu_hours": 4800.0,
+        "on_demand": 12000,
+        "optimized": 7596
+      },
+      {
+        "job_id": "job-train-embed",
+        "gpu_type": "A100",
+        "tier": "spot",
+        "active_gpu_hours": 1200.0,
+        "billed_gpu_hours": 1200.0,
+        "on_demand": 2148,
+        "optimized": 1393
+      },
+      {
+        "job_id": "job-finetune",
+        "gpu_type": "H100",
+        "tier": "spot",
+        "active_gpu_hours": 360.0,
+        "billed_gpu_hours": 360.0,
+        "on_demand": 900,
+        "optimized": 570
+      },
+      {
+        "job_id": "job-infer-chat",
+        "gpu_type": "A10G",
+        "tier": "reserved",
+        "active_gpu_hours": 4320.0,
+        "billed_gpu_hours": 4320,
+        "on_demand": 4320,
+        "optimized": 2592
+      },
+      {
+        "job_id": "job-infer-rag",
+        "gpu_type": "A100",
+        "tier": "reserved",
+        "active_gpu_hours": 2160.0,
+        "billed_gpu_hours": 2160,
+        "on_demand": 3866,
+        "optimized": 2160
+      },
+      {
+        "job_id": "job-infer-search",
+        "gpu_type": "L4",
+        "tier": "reserved",
+        "active_gpu_hours": 2160.0,
+        "billed_gpu_hours": 2880,
+        "on_demand": 1728,
+        "optimized": 1296
+      },
+      {
+        "job_id": "job-dev-sandbox",
+        "gpu_type": "A10G",
+        "tier": "spot",
+        "active_gpu_hours": 480.0,
+        "billed_gpu_hours": 480.0,
+        "on_demand": 480,
+        "optimized": 203
+      },
+      {
+        "job_id": "job-batch-eval",
+        "gpu_type": "H100",
+        "tier": "spot",
+        "active_gpu_hours": 90.0,
+        "billed_gpu_hours": 90.0,
+        "on_demand": 225,
+        "optimized": 142
+      }
+    ],
+    "on_demand_monthly": 25667,
+    "optimized_monthly": 15951,
+    "savings_pct": 37.9
+  },
+  "m4": {
+    "by_team": {
+      "rag": 1.6,
+      "search": 2.49,
+      "eval": 1.79,
+      "assistant": 2.59
+    },
+    "by_project": {
+      "doc-qa": 1.45,
+      "web-search": 2.27,
+      "nightly-eval": 1.62,
+      "chat": 2.44,
+      "(untagged)": 0.71
+    },
+    "tag_coverage": 0.918,
+    "chargeback_ready": true
+  },
+  "m5": {
+    "baseline_monthly": 27133,
+    "optimized_monthly": 14950,
+    "levers": {
+      "Inference (cascade/cache/batch)": 1212,
+      "Purchasing (spot/reserved)": 9716,
+      "Right-size util-lies": 655,
+      "Kill idle GPUs": 600
+    },
+    "total_savings_pct": 44.9
+  },
+  "m6": {
+    "assumptions": {
+      "month_days": 30,
+      "basis": "hours_per_day * 30 days; workload days column is a shorter horizon and is not applied",
+      "power_model": "catalog GPU watts * GPU count; constant draw, facility overhead excluded",
+      "electricity_cost_note": "illustrative facility electricity cost; separate from rental cost and not counted as rental savings"
+    },
+    "jobs": [
+      {
+        "job_id": "job-train-llm",
+        "gpu_type": "H100",
+        "num_gpus": 8,
+        "hours_per_day": 20.0,
+        "monthly_kwh": 3360.0,
+        "baseline_region": "us-east-1",
+        "baseline_electricity_usd": 403.2,
+        "baseline_carbon_gco2e": 1276800.0,
+        "cleanest_region": "europe-north1",
+        "cleanest_electricity_usd": 302.4,
+        "cleanest_carbon_gco2e": 100800.0,
+        "carbon_gco2e_saved": 1176000.0
+      },
+      {
+        "job_id": "job-train-embed",
+        "gpu_type": "A100",
+        "num_gpus": 4,
+        "hours_per_day": 10.0,
+        "monthly_kwh": 480.0,
+        "baseline_region": "us-east-1",
+        "baseline_electricity_usd": 57.6,
+        "baseline_carbon_gco2e": 182400.0,
+        "cleanest_region": "europe-north1",
+        "cleanest_electricity_usd": 43.2,
+        "cleanest_carbon_gco2e": 14400.0,
+        "carbon_gco2e_saved": 168000.0
+      },
+      {
+        "job_id": "job-finetune",
+        "gpu_type": "H100",
+        "num_gpus": 2,
+        "hours_per_day": 6.0,
+        "monthly_kwh": 252.0,
+        "baseline_region": "us-east-1",
+        "baseline_electricity_usd": 30.24,
+        "baseline_carbon_gco2e": 95760.0,
+        "cleanest_region": "europe-north1",
+        "cleanest_electricity_usd": 22.68,
+        "cleanest_carbon_gco2e": 7560.0,
+        "carbon_gco2e_saved": 88200.0
+      }
+    ],
+    "monthly_energy_kwh": 4092.0,
+    "regions": {
+      "us-east-1": {
+        "usd_per_kwh": 0.12,
+        "gco2e_per_kwh": 380,
+        "electricity_usd": 491.04,
+        "carbon_gco2e": 1554960.0
+      },
+      "us-west-2": {
+        "usd_per_kwh": 0.07,
+        "gco2e_per_kwh": 120,
+        "electricity_usd": 286.44,
+        "carbon_gco2e": 491040.0
+      },
+      "europe-north1": {
+        "usd_per_kwh": 0.09,
+        "gco2e_per_kwh": 30,
+        "electricity_usd": 368.28,
+        "carbon_gco2e": 122760.0
+      },
+      "europe-central2": {
+        "usd_per_kwh": 0.18,
+        "gco2e_per_kwh": 660,
+        "electricity_usd": 736.56,
+        "carbon_gco2e": 2700720.0
+      },
+      "us-east-wa": {
+        "usd_per_kwh": 0.055,
+        "gco2e_per_kwh": 90,
+        "electricity_usd": 225.06,
+        "carbon_gco2e": 368280.0
+      }
+    },
+    "comparison": {
+      "baseline_region": "us-east-1",
+      "cleanest_region": "europe-north1",
+      "before": {
+        "usd_per_kwh": 0.12,
+        "gco2e_per_kwh": 380,
+        "electricity_usd": 491.04,
+        "carbon_gco2e": 1554960.0
+      },
+      "after": {
+        "usd_per_kwh": 0.09,
+        "gco2e_per_kwh": 30,
+        "electricity_usd": 368.28,
+        "carbon_gco2e": 122760.0
+      },
+      "electricity_usd_change": -122.76,
+      "carbon_gco2e_saved": 1432200.0,
+      "carbon_savings_pct": 92.11
+    },
+    "optimal_regions": {
+      "cheapest": "us-east-wa",
+      "cleanest": "europe-north1",
+      "balanced": "us-east-wa"
+    },
+    "balanced_scores": {
+      "us-east-1": 0.537778,
+      "us-west-2": 0.131429,
+      "europe-north1": 0.14,
+      "europe-central2": 1.0,
+      "us-east-wa": 0.047619
+    },
+    "balanced_policy": "minimize the mean of min-max normalized monthly electricity USD and carbon gCO2e; equal weights, lower is better",
+    "caveat": "Carbon-optimal placement may increase user latency or conflict with data residency; validate both before scheduling across regions. No external APIs are used."
+  },
+  "reasoning_cap5": {
+    "baseline_daily": 48.87,
+    "optimized_daily": 8.48,
+    "baseline_per_m": 6.488,
+    "optimized_per_m": 1.126,
+    "savings_pct": 82.6,
+    "total_tokens": 7533027,
+    "lever_savings": {
+      "cascade": 37.398518,
+      "cache": 1.196455,
+      "batch": 1.794565
+    },
+    "cascade_daily": 11.475643,
+    "cache_daily": 10.279188,
+    "reasoning_requests": 201,
+    "normal_requests": 2199,
+    "total_requests": 2400,
+    "reasoning_tokens": 1241156,
+    "normal_tokens": 6291871,
+    "reasoning_cost": 1.396464,
+    "normal_cost": 7.088159,
+    "reasoning_wh": 29787.744,
+    "normal_wh": 1887.5613,
+    "reasoning_cost_share": 0.164588,
+    "reasoning_traffic_share": 0.08375,
+    "reasoning_energy_share": 0.940409,
+    "reasoning_normal_energy_wh": 372.3468,
+    "reasoning_extra_wh": 29415.3972,
+    "reasoning_cap_fraction": 0.05,
+    "reasoning_cap_requests": 120,
+    "reasoning_cap_traffic_pct": 5.0,
+    "reasoning_cap_saved_usd": 0.0,
+    "reasoning_cap_saved_wh": 7842.9699,
+    "reasoning_cap_total_wh_before": 31675.3053,
+    "reasoning_cap_total_wh_after": 23832.3354,
+    "reasoning_cap_assumption": "same tokens, tier, prices, caching and batching; no dollar premium assigned",
+    "reasoning_routing_rule": "offline output-length scenario proxy only; production requires an input-side task classifier, confidence gate, and quality validation"
+  }
+}

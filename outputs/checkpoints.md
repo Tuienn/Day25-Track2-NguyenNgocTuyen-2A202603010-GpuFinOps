@@ -43,3 +43,12 @@ us-east-1 → europe-north1 giảm 1.432.200 gCO2e (92,11%) và $122,76
 tiền điện minh họa. Rẻ nhất và cân bằng theo score chuẩn hóa 50/50:
 us-east-wa; sạch nhất: europe-north1. Đây không phải tiết kiệm thêm
 trên hóa đơn thuê GPU. `checks/check_carbon.py` pass đối soát tổng.
+
+## CP5 — Tích hợp báo cáo và bộ bài nộp
+
+M5 sinh report chi tiết, writeup tiếng Việt, results.json và waterfall thật
+có baseline/optimized cùng bốn lever. Sửa nhãn vùng sạch nhất (không gọi
+là rẻ nhất), phân biệt query mẫu 800 token với năng lượng dataset.
+Report ghi rõ snapshot giá, kịch bản 30 ngày, điều kiện right-size và
+nguy cơ trùng cost buckets do thiếu mapping giữa các nguồn dữ liệu.
+run_all chạy cả M6. Bộ tests gốc vẫn giữ nguyên.

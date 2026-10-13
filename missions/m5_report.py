@@ -6,9 +6,11 @@ from __future__ import annotations
 import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
 import os
+import json
 from missions._common import num, catalog_by_type, ROOT
 from finops import report, sustainability
-from missions import m1_efficiency_audit, m2_inference_levers, m3_purchasing
+from finops.lab_analysis import analysis_sections, short_writeup
+from missions import m1_efficiency_audit, m2_inference_levers, m3_purchasing, m4_allocation, m6_carbon_scheduling
 
 DAYS = 30
 # one tier down for over-provisioned ("util-lie") GPUs
@@ -19,6 +21,9 @@ def run(verbose: bool = True) -> dict:
     r1 = m1_efficiency_audit.run(verbose=False)
     r2 = m2_inference_levers.run(verbose=False)
     r3 = m3_purchasing.run(verbose=False)
+    r4 = m4_allocation.run(verbose=False)
+    r6 = m6_carbon_scheduling.run(verbose=False)
+    cap5 = m2_inference_levers.run(verbose=False, reasoning_cap=0.05)
     cat = catalog_by_type()
 
     # --- buckets ---
@@ -53,19 +58,26 @@ def run(verbose: bool = True) -> dict:
     }
 
     md = report.build_report(baseline, optimized, levers, sustainability=sust)
+    md += analysis_sections(r1, r2, r3, r4, r6, cap5)
+    result = {"baseline_monthly": round(baseline), "optimized_monthly": round(optimized),
+              "levers": levers, "total_savings_pct": round(total_pct, 1)}
     out_md = os.path.join(ROOT, "outputs", "report.md")
     os.makedirs(os.path.dirname(out_md), exist_ok=True)
     with open(out_md, "w") as f:
         f.write(md)
-    png = report.savings_waterfall(levers, os.path.join(ROOT, "outputs", "savings.png"))
+    png = report.savings_waterfall(levers, os.path.join(ROOT, "outputs", "savings.png"), baseline_usd=baseline)
+    with open(os.path.join(ROOT, "outputs", "writeup.md"), "w") as f:
+        f.write(short_writeup(r1, r2, r3, result, r6, cap5))
+    with open(os.path.join(ROOT, "outputs", "results.json"), "w") as f:
+        json.dump({"m1": r1, "m2": r2, "m3": r3, "m4": r4, "m5": result,
+                   "m6": r6, "reasoning_cap5": cap5}, f, indent=2)
 
     if verbose:
         print("== M5 Optimization Report ==")
         print(md)
         print(f"\nWritten: outputs/report.md" + (f" + outputs/savings.png" if png else " (matplotlib absent: PNG skipped)"))
 
-    return {"baseline_monthly": round(baseline), "optimized_monthly": round(optimized),
-            "levers": levers, "total_savings_pct": round(total_pct, 1)}
+    return result
 
 
 if __name__ == "__main__":
