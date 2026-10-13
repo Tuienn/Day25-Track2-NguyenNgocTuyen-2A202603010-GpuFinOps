@@ -25,3 +25,12 @@ logic điểm hòa vốn của policy. Với job-infer-search 18 giờ/ngày,
 chi phí reserved tăng $324/tháng so với mô hình gốc. Đây là điều chỉnh
 kế toán, không phải extension tier-policy. `checks/check_purchasing.py`
 kiểm tra trường hợp GPU giả lập có duty cycle 75%.
+
+## CP3 — Extension 4: ngân sách reasoning
+
+M2 phân rã savings cascade → cache → batch, tách request/cost/Wh theo
+reasoning, và so sánh cap 10%, 5%, 0%. Dataset có 201/2400 request reasoning
+(8,375%), 16,5% cost và 94,0% energy. Cap 10% chưa tác động; cap 5%
+giảm 7.842,97 Wh/ngày theo hệ số mô phỏng 80×. Không bịa phụ phí USD:
+cùng token, tier và discount thì cap này tiết kiệm $0 tiền token.
+Đã kiểm tra cap hoạt động, biên 0, input sai, đối soát cohort và năng lượng.
