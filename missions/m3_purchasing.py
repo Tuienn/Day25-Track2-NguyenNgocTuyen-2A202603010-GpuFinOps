@@ -31,13 +31,17 @@ def run(verbose: bool = True) -> dict:
             sim = pricing.spot_checkpoint_cost(gpu_hours, num(c["spot_hr"]), od)
             opt_cost = sim["spot_cost"]
         elif tier == "reserved":
-            opt_cost = gpu_hours * num(c["reserved_3yr_hr"])
+            # A reservation is billed even when the GPU is idle; otherwise the
+            # duty-cycle break-even policy and the modeled bill disagree.
+            opt_cost = 24 * DAYS * ngpu * num(c["reserved_3yr_hr"])
         else:
             opt_cost = on_demand_cost
 
         on_demand_monthly += on_demand_cost
         optimized_monthly += opt_cost
         recs.append({"job_id": j["job_id"], "gpu_type": gtype, "tier": tier,
+                     "active_gpu_hours": gpu_hours,
+                     "billed_gpu_hours": 24 * DAYS * ngpu if tier == "reserved" else gpu_hours,
                      "on_demand": round(on_demand_cost), "optimized": round(opt_cost)})
 
     savings = on_demand_monthly - optimized_monthly

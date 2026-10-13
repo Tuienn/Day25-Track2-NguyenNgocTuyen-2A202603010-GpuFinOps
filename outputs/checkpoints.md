@@ -17,3 +17,11 @@ Các file kiểm tra bổ sung đặt ở `checks/`; giữ nguyên bộ `tests/`
 
 Các checkpoint tiếp theo sẽ ghi nhận riêng code extension, cải thiện báo cáo,
 và kiểm chứng bộ đầu ra cuối cùng. Mỗi checkpoint có một commit riêng.
+
+## CP2 — Kiểm toán chi phí purchasing
+
+Đã sửa reserved để tính đủ 24 giờ/ngày, kể cả giờ idle, phù hợp với
+logic điểm hòa vốn của policy. Với job-infer-search 18 giờ/ngày,
+chi phí reserved tăng $324/tháng so với mô hình gốc. Đây là điều chỉnh
+kế toán, không phải extension tier-policy. `checks/check_purchasing.py`
+kiểm tra trường hợp GPU giả lập có duty cycle 75%.
