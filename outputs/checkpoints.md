@@ -34,3 +34,12 @@ reasoning, và so sánh cap 10%, 5%, 0%. Dataset có 201/2400 request reasoning
 giảm 7.842,97 Wh/ngày theo hệ số mô phỏng 80×. Không bịa phụ phí USD:
 cùng token, tier và discount thì cap này tiết kiệm $0 tiền token.
 Đã kiểm tra cap hoạt động, biên 0, input sai, đối soát cohort và năng lượng.
+
+## CP4 — Extension 5: carbon-aware scheduling
+
+M6 so sánh năm vùng cho ba job training interruptible; có carbon trước/sau
+theo từng job. Kịch bản chạy lặp 30 ngày dùng 4.092 kWh/tháng; di chuyển
+us-east-1 → europe-north1 giảm 1.432.200 gCO2e (92,11%) và $122,76
+tiền điện minh họa. Rẻ nhất và cân bằng theo score chuẩn hóa 50/50:
+us-east-wa; sạch nhất: europe-north1. Đây không phải tiết kiệm thêm
+trên hóa đơn thuê GPU. `checks/check_carbon.py` pass đối soát tổng.
