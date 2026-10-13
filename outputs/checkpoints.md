@@ -52,3 +52,24 @@ là rẻ nhất), phân biệt query mẫu 800 token với năng lượng datase
 Report ghi rõ snapshot giá, kịch bản 30 ngày, điều kiện right-size và
 nguy cơ trùng cost buckets do thiếu mapping giữa các nguồn dữ liệu.
 run_all chạy cả M6. Bộ tests gốc vẫn giữ nguyên.
+
+## CP6 — Kiểm chứng cuối và sẵn sàng nộp
+
+- `verify.py`: **11/11 checks passed** sau tích hợp.
+- `python -m pytest -q`: **15 passed** sau tích hợp.
+- `checks/check_reasoning.py`: pass (cap 10%, 5%, 0%, input sai, cohort accounting).
+- `checks/check_carbon.py`: pass (5 vùng, totals và per-job reconciliation).
+- `checks/check_purchasing.py`: pass (reserved trả đủ giờ cam kết).
+- `checks/check_submission.py`: pass (report/JSON đối soát, 50-row FOCUS sample,
+  PNG tồn tại, tái tạo report/writeup/JSON không thay đổi).
+- `git diff --check`: pass; không sửa bất kỳ file nào trong `tests/`.
+- Đã xem savings.png: baseline, bốn lever và optimized đọc được, nhãn không bị cắt.
+- `missions/run_all.py` chạy thành công; stdout lưu trong `outputs/missions.log`.
+
+Kết quả cuối: kịch bản tháng $27.133 → $14.950, savings $12.183 (44,9%).
+Inference $6.488 → $1.126/1M-token (82,6%). Những con số tổng tháng là
+planning scenario với giả định buckets độc lập, không phải savings thực tế đã đo.
+
+Bài nộp: `outputs/report.md`, `outputs/savings.png`, `outputs/focus_export.csv`,
+`outputs/writeup.md`. `baseline.json`, `results.json` và `missions.log`
+là bằng chứng so sánh và tái tạo. Chưa push lên remote.
