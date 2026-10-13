@@ -1,8 +1,11 @@
 # NimbusAI — GPU Cost Optimization Report
 
-**Period:** monthly  
-**Baseline spend:** $27,133  
-**Optimized spend:** $14,950  
+**Period:** monthly
+
+**Baseline spend:** $27,133
+
+**Optimized spend:** $14,950
+
 **Projected savings:** $12,183  (**45%**)
 
 ## Savings by lever

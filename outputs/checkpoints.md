@@ -73,3 +73,9 @@ planning scenario với giả định buckets độc lập, không phải saving
 Bài nộp: `outputs/report.md`, `outputs/savings.png`, `outputs/focus_export.csv`,
 `outputs/writeup.md`. `baseline.json`, `results.json` và `missions.log`
 là bằng chứng so sánh và tái tạo. Chưa push lên remote.
+
+## CP7 — Dọn format Markdown sinh tự động
+
+Rà soát diff phát hiện hard line breaks bằng trailing spaces trong report
+của starter. Đổi sang đoạn riêng, sinh lại report/log và kiểm tra lại.
+Đây chỉ là sửa format; số liệu và logic giữ nguyên.
